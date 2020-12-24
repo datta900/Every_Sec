@@ -1,0 +1,2 @@
+# Every_Sec
+• Salary mode: si può inserire uno stipendio (a mano) di qualsiasi personaggio famoso o anche uno stipendio X generico e poter impostare se quello stipendio è inteso settimanale, mensile o annuale e fare poi il calcolo al secondo • Every mode: si può inserire qualsiasi valore economico di qualsiasi cosa, impostare un orizzonte temporale di riferimento e calcolare il valore/costo di quella cosa al secondo
