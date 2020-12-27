@@ -1,0 +1,19 @@
+import { constants } from "buffer";
+
+export const Constants = {
+    SECS_PER_MINUTE: 60,
+    SECS_PER_HOUR: 3600,
+    SECS_PER_DAY: 3600*24,
+    SECS_PER_MONTH_30: 3600*24*30,
+    SECS_PER_YEAR: 3600*24*365,
+    MINS_PER_HOUR: 60,
+    MINS_PER_DAY: 60*24,
+    MINS_PER_MONTH_30: 60*24*30,
+    MINS_PER_YEAR: 60*24*365,
+    HOURS_PER_DAY: 24,
+    HOURS_PER_MONTH_30: 24*30,
+    HOURS_PER_YEAR: 24*365,
+    DAYS_PER_MONTH_30: 30,
+    DAYS_PER_YEAR: 365,
+    MONTHS_PER_YEAR: 12
+} as const;

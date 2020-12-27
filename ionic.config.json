@@ -1,0 +1,7 @@
+{
+  "name": "quanto-guadagni",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

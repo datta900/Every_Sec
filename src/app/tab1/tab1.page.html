@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Quanto guadagni?
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Quanto guadagni?</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  <ion-item>
+    <ion-label>Insert a value</ion-label>
+    <ion-input type="number" name="value" [(ngModel)]="value"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button class="btn btn-primary" type="submit" (click)="getResult()" >Calculate!</ion-button>
+    <div *ngIf="!null">{{result}}</div>
+  </ion-item>
+</ion-content>
