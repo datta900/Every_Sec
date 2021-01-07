@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-
+import { Constants } from "../app.constants";
 import { MathService } from '../services/math.service';
 
 @Component({
@@ -12,11 +11,17 @@ export class Tab1Page {
 
   value: number;
   result: number;
-
+  choices : string[] = ["week", "month", "year"];
+  selection : string;
   constructor(private mathService: MathService) {}
 
-  getResult() {
-    this.result = this.mathService.secMonth(this.value);
+  selectTempo(value){
+    if (this.selection === "week") {
+        this.result = this.mathService.calculate(value,Constants.SECS_PER_WEEK)
+    } else if(this.selection === "month"){
+      this.result = this.mathService.calculate(value,Constants.SECS_PER_MONTH_30)
+    } else if (this.selection === "year"){
+      this.result = this.result = this.mathService.calculate(value,Constants.SECS_PER_YEAR)};
+    }
   }
 
-}

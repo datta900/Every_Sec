@@ -6,12 +6,8 @@ import { Constants } from "../app.constants";
 })
 export class MathService {
 
-    secMonth (value:number){
-        return value = value/Constants.SECS_PER_MONTH_30;
-    }
-
-    secYear (value:number){
-        return value = value/Constants.SECS_PER_YEAR;
+    calculate (value:number,tempo:number){
+        return value/tempo;
     }
 
 }
