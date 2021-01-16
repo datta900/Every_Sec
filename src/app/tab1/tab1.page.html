@@ -18,16 +18,22 @@
   <ion-item-group>
     <ion-item>
       <ion-label>Insert a value</ion-label>
-      <ion-input type="number" [(ngModel)]="value"></ion-input>
+      <ion-input type="number" [(ngModel)]="value" (ngModelChange)="checkFlag()"></ion-input>
       <ion-label>Calculate the salary by:</ion-label>
-      <ion-select [(ngModel)]="selection" (ngModelChange)="selectTempo(value)">
+      <ion-select [(ngModel)]="tempo" (ngModelChange)="selectTempo(value)">
         <ion-select-option value="week">Week</ion-select-option>
         <ion-select-option value="month">Month</ion-select-option>
         <ion-select-option value="year">Year</ion-select-option>
       </ion-select>
+      <ion-select [(ngModel)]="currency" (ngModelChange)="onModelChange($event,value)">
+        <ion-select-option value="$">$</ion-select-option>
+        <ion-select-option value="£">£</ion-select-option>
+        <ion-select-option value="€">€</ion-select-option>
+        <ion-select-option value="¥">¥</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <div>{{result}}</div>
+      <div *ngIf="show">{{result}} {{currency}}/s</div>
     </ion-item>
   </ion-item-group>
 </ion-content>

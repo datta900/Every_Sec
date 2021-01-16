@@ -6,8 +6,13 @@ import { Constants } from "../app.constants";
 })
 export class MathService {
 
-    calculate (value:number,tempo:number){
+    calculateTempo (value:number,tempo:number){
         return value/tempo;
     }
+
+    currencyConversion (value:number, ToDollar:number, toSelectedCurrency:number) {
+        return value*(toSelectedCurrency/ToDollar);
+    }
+
 
 }
