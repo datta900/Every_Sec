@@ -22,5 +22,13 @@ export class MathService {
     secPerMinute(currency: number){
         return currency = currency/Constants.SECS_PER_MINUTE;
     }
+    calculateTempo (value:number,tempo:number){
+        return value/tempo;
+    }
+
+    currencyConversion (value:number, ToDollar:number, toSelectedCurrency:number) {
+        return value*(toSelectedCurrency/ToDollar);
+    }
+
 
 }
