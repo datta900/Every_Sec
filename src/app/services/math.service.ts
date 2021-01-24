@@ -6,12 +6,21 @@ import { Constants } from "../app.constants";
 })
 export class MathService {
 
-    secMonth (value:number){
-        return value = value/Constants.SECS_PER_MONTH_30;
+    secWeek(currency: number){
+        console.log("currency:", currency/Constants.SECS_PER_WEEK)
+        return currency = currency/Constants.SECS_PER_WEEK
     }
 
-    secYear (value:number){
-        return value = value/Constants.SECS_PER_YEAR;
+    secMonth (currency: number){
+        return currency = currency/Constants.SECS_PER_MONTH_30;
+    }
+
+    secYear (currency: number){
+        return currency = currency/Constants.SECS_PER_YEAR;
+    }
+
+    secPerMinute(currency: number){
+        return currency = currency/Constants.SECS_PER_MINUTE;
     }
 
 }
