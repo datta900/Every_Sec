@@ -1,17 +1,49 @@
+<!--Every mode: si può inserire qualsiasi valore economico di qualsiasi cosa, 
+  impostare un orizzonte temporale di riferimento e calcolare il valore/costo di quella cosa al secondo*/-->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Every Mode
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-label color="euro">Euro</ion-label>
+  <ion-input type="number" name="euroValue" [(ngModel)]="euroValue" class="label_input"></ion-input>
+    <br>
+    <br>
+    <br>
+    <ion-label color="day">Day</ion-label>
+    <ion-input type="number" name="input_day" [(ngModel)]="input_day" class="label_input"></ion-input>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+    <!--ion-label >Week</ion-label>
+    <ion-input type="number" name="input_week" class="label_input"></ion-input-->
+
+    <ion-label color="month">Month</ion-label>
+    <ion-input type="number" name="input_month" [(ngModel)]="input_month" class="label_input"></ion-input>
+    
+    <ion-label color="year">Year</ion-label>
+    <ion-input type="number" name="input_year" [(ngModel)]="input_year" class="label_input"></ion-input>
+
+    /**/
+
+    <ion-label >END DAY</ion-label>
+    <ion-input type="number" name="input_end_day"  [(ngModel)]="input_end_day" class="label_input"></ion-input>
+
+    <ion-label color="month"> END Month</ion-label>
+    <ion-input type="number" name="input_end_month"  [(ngModel)]="input_end_month" class="label_input"></ion-input>
+    
+    <ion-label color="year"> END Year</ion-label>
+    <ion-input type="number" name="input_end_year"  [(ngModel)]="input_end_year" class="label_input"></ion-input>
+    
+
+
+    <ion-button class="btn btn-primary" type="submit" (click)="getResult(input_day, input_month, input_year, input_end_day, input_end_month, input_end_year)" >Calculate!</ion-button><br>
+    <ion-label type="number" name="day"   *ngIf="!null"   ngDefaultControl [(ngModel)]="day" >{{day}}</ion-label><br>
+    <ion-label type="number" name="week"      *ngIf="!null"   ngDefaultControl [(ngModel)]="week"   >{{week}}</ion-label><br>
+    <ion-label type="number" name="month"     *ngIf="!null"  ngDefaultControl  [(ngModel)]="month"  >{{month}}</ion-label><br>
+    <ion-label type="number" name="year"     *ngIf="!null"  ngDefaultControl  [(ngModel)]="year"  >{{year}}</ion-label><br>
+
+</ion-content> 

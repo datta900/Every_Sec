@@ -6,6 +6,22 @@ import { Constants } from "../app.constants";
 })
 export class MathService {
 
+    secWeek(currency: number){
+        console.log("currency:", currency/Constants.SECS_PER_WEEK)
+        return currency = currency/Constants.SECS_PER_WEEK
+    }
+
+    secMonth (currency: number){
+        return currency = currency/Constants.SECS_PER_MONTH_30;
+    }
+
+    secYear (currency: number){
+        return currency = currency/Constants.SECS_PER_YEAR;
+    }
+
+    secPerMinute(currency: number){
+        return currency = currency/Constants.SECS_PER_MINUTE;
+    }
     calculateTempo (value:number,tempo:number){
         return value/tempo;
     }
