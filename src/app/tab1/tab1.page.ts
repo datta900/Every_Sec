@@ -1,4 +1,3 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component } from '@angular/core';
 import { Constants } from "../app.constants";
 import { MathService } from '../services/math.service';
@@ -12,13 +11,15 @@ export class Tab1Page {
 
   value: number;
   result: number;
-  tempos : string[] = ["week", "month", "year"];
+  tempos : string[] = ["day","week", "month", "year"];
   tempo : string;
   currency: string;
   currencies : string[] = ["$", "€", "¥", "£"];
   oldCurrency:string;
   ToDollar: number = 1;
-  show: boolean =false;
+  show: boolean = false;
+  exponent: number;
+  decExp: number;
 
   constructor(private mathService: MathService) {}
   
@@ -37,36 +38,43 @@ export class Tab1Page {
     this.oldCurrency = event;
   }
   selectTempo(value){
-    if (this.tempo === "week") {
-        this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_WEEK)
+    if (this.tempo === "day") {
+      this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_DAY);
+    } else if (this.tempo === "week") {
+      this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_WEEK);
     } else if(this.tempo === "month"){
-      this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_MONTH_30)
+      this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_MONTH_30);
     } else if (this.tempo === "year"){
-      this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_YEAR)};
+      this.result = this.mathService.calculateTempo(value,Constants.SECS_PER_YEAR);
     }
+  }  
 
+  powerOfTen(){
+    this.exponent = Math.log10(this.result);
+    this.decExp = Math.trunc(this.result/10^(this.exponent+3))/1000;
     
-    selectCurrency(oldCurrency,event,value){
-    
-      if (oldCurrency === "$") {
-          this.ToDollar = 1;
-      } else if(oldCurrency === "€"){
-          this.ToDollar = Constants.EURO_TO_DOLLAR;
-      } else if (oldCurrency === "£"){
-          this.ToDollar = Constants.POUND_TO_DOLLAR;
-      } else if (oldCurrency === "¥"){
-          this.ToDollar = Constants.YEN_TO_DOLLAR;
-      };
-    
-    if (event === "$") {
-        this.value = this.mathService.currencyConversion(value,this.ToDollar,1)
-    } else if(this.currency === "€"){
-      this.value = this.mathService.currencyConversion(value,this.ToDollar,Constants.DOLLAR_TO_EURO)
-    } else if (this.currency === "£"){
-      this.value = this.mathService.currencyConversion(value,this.ToDollar,Constants.DOLLAR_TO_POUND)
-    } else if (this.currency === "¥"){
-      this.value = this.mathService.currencyConversion(value,this.ToDollar,Constants.DOLLAR_TO_YEN)
-      };
+  }
+  selectCurrency(oldCurrency,event,value){
+  
+    if (oldCurrency === "$") {
+        this.ToDollar = 1;
+    } else if(oldCurrency === "€"){
+        this.ToDollar = Constants.EURO_TO_DOLLAR;
+    } else if (oldCurrency === "£"){
+        this.ToDollar = Constants.POUND_TO_DOLLAR;
+    } else if (oldCurrency === "¥"){
+        this.ToDollar = Constants.YEN_TO_DOLLAR;
+    }
+  
+  if (event === "$") {
+      this.value = this.mathService.currencyConversion(value,this.ToDollar,1);
+  } else if(this.currency === "€"){
+    this.value = this.mathService.currencyConversion(value,this.ToDollar,Constants.DOLLAR_TO_EURO);
+  } else if (this.currency === "£"){
+    this.value = this.mathService.currencyConversion(value,this.ToDollar,Constants.DOLLAR_TO_POUND);
+  } else if (this.currency === "¥"){
+    this.value = this.mathService.currencyConversion(value,this.ToDollar,Constants.DOLLAR_TO_YEN);
     }
   }
+}
 
